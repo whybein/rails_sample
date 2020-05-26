@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>NoteProject</title><
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  </head>
+
+  <body>
+    <div> 
+      <%if user_signed_in?%>
+        <%=current_user.email%> /
+        <%=link_to '로그아웃', destroy_user_session_path, method: :delete%>
+      <%else%>
+        <%=link_to '회원가입', new_user_registration_path%> /
+        <%=link_to '로그인', new_user_session_path%>
+      <%end%>
+    </div>
+    
+
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
+    <%= yield %>
+  </body>
+</html>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js">
