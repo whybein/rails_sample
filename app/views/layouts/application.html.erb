@@ -1,31 +1,31 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>NoteProject</title><
+    <title>NoteProject</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+      a {
+        text-decoration: unset !important;
+      }
+    </style>
+
   </head>
 
   <body>
-    <div> 
-      <%if user_signed_in?%>
-        <%=current_user.email%> /
-        <%=link_to '로그아웃', destroy_user_session_path, method: :delete%>
-      <%else%>
-        <%=link_to '회원가입', new_user_registration_path%> /
-        <%=link_to '로그인', new_user_session_path%>
-      <%end%>
-    </div>
-    
-
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-
-    <%= yield %>
+    <%= render 'shared/header' %>
+    <% if controller_name != "home" %>
+      <div class="container my-5">
+    <% end %>
+      <%= yield %>
+    <% if controller_name != "home" %>
+      </div>
+    <% end %>
   </body>
 </html>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js" integrity="sha384-1CmrxMRARb6aLqgBO7yyAxTOQE2AKb9GfXnEo760AUcUmFx3ibVJJAzGytlQcNXd" crossorigin="anonymous"></script>

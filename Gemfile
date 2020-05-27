@@ -10,6 +10,11 @@ gem 'jquery-rails'
 gem 'carrierwave'
 gem 'devise'
 
+gem 'activeadmin'
+gem 'cancancan'
+gem 'draper'
+gem 'pundit'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.1'
 # Use sqlite3 as the database for Active Record
