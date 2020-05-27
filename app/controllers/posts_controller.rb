@@ -28,14 +28,12 @@ class PostsController < ApplicationController
       hashtag = Hashtag.find_or_create_by(title: tag)
       @post.hashtags << hashtag
     end
-    respond_to do |format|
-      if @post.save
-        format.html{ redirect_to posts_path, notice: '게시물이 성공적으로 작성되었습니다!' }
-      else
-        format.html{ render :new }
-      end
-    # redirect_to posts_path
+    if @post.save
+      redirect_to posts_path, notice: '게시물이 성공적으로 작성되었습니다!'
+    else
+      render :new
     end
+  # redirect_to posts_path
   end
 
   def destroy
@@ -55,9 +53,9 @@ class PostsController < ApplicationController
     # post.save
     respond_to do |format|
       if @post.update(post_params)
-        format.html{ redirect_to posts_path, notice: '게시물이 성공적으로 수정되었습니다' }
+        redirect_to posts_path, notice: '게시물이 성공적으로 수정되었습니다'
       else
-        format.html{ render :edit}
+        render :edit
       end
     end
     # redirect_to posts_path
